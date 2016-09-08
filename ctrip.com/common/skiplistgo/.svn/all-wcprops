@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/go_code/!svn/ver/15/trunk/hotel_service/common/skiplistgo
+END
+type.go
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/go_code/!svn/ver/15/trunk/hotel_service/common/skiplistgo/type.go
+END
+skiplist.go
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/go_code/!svn/ver/22/trunk/hotel_service/common/skiplistgo/skiplist.go
+END
+var.go
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/go_code/!svn/ver/15/trunk/hotel_service/common/skiplistgo/var.go
+END
+element.go
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/go_code/!svn/ver/15/trunk/hotel_service/common/skiplistgo/element.go
+END

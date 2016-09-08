@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>map</title>
+	<meta content="text/html" charset="utf-8" />
+    <style>
+        html, body { width:100%; height: 100%; margin: 0; padding: 0; font-family: Arial; font-size: 14px;}
+        body {background:#F4F4F4 !important}
+        #map-canvas {position:relative; left:100px;top:100px; cursor:pointer; width: 100px; height: 100px; float: left ;background-color: gray}
+
+        .animated {
+            -webkit-animation-duration: 1s;
+               -moz-animation-duration: 1s;
+                -ms-animation-duration: 1s;
+                 -o-animation-duration: 1s;
+                    animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+               -moz-animation-fill-mode: both;
+                -ms-animation-fill-mode: both;
+                 -o-animation-fill-mode: both;
+                    animation-fill-mode: both;
+        }
+        .rollIn {
+            -webkit-animation-name: rollIn;
+        }
+
+        @-webkit-keyframes rollIn {
+            0% { opacity: 0; -webkit-transform: translateX(-100%) rotate(-120deg); }
+            100% { opacity: 1; -webkit-transform: translateX(0px) rotate(0deg); }
+        }
+   </style>
+    <script src="jquery-1.8.0.min.js"></script>
+    <script src="velocity.min.js"></script>
+    
+</head>
+
+<body>
+    <div data-id="1" id="map-canvas"></div>
+    <script>
+    $('#map-canvas').on('click',function(){
+        console.log($(this));
+        $(this).velocity({ 
+            left: "0px",
+            top: "0px" 
+        }, {
+    /* Default options */
+            duration: 400,
+            easing: "swing",
+            queue: "",
+            complete: function(){alert('aa')},
+            loop: false,
+            delay: false,
+            display: false,
+            mobileHA: true
+        });
+        //'-webkit-transform': 'translateY(-100px)'
+    });
+    </script>
+</body>
+</html>
+

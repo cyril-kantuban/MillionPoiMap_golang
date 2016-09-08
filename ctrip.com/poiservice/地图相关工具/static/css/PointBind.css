@@ -1,0 +1,281 @@
+﻿form,html,body{
+width:100%;
+height:100%;
+
+padding:0px;
+margin:0px;
+}
+body{
+padding:0px;
+margin:0px;
+color: black;
+font-family: arial,sans-serif;
+font-size: 13px;
+overflow-x : hidden;
+overflow-y : hidden;
+}
+#logo{
+    background: url(http://img.pintupinqu.com/images/logo_nav.png) no-repeat center 15px;
+    position: absolute;
+    left:10px;
+    top:-2px;
+    width:108px;
+    height:34px;
+}
+#query{
+width:72px;
+height:29px;
+vertical-align: middle;
+}
+
+#address{
+width:400px;
+height:22px
+}
+
+#ds .h1 {
+height: 1px;
+}
+#ds .o1 {
+opacity: .05;
+filter: alpha(opacity=5);
+}
+#ds .o2 {
+opacity: .04;
+filter: alpha(opacity=4);
+}
+#ds .h2 {
+height: 2px;
+}
+#ds .o3 {
+opacity: .03;
+filter: alpha(opacity=3);
+}
+#ds .h3 {
+height: 3px;
+}
+#ds .o4 {
+opacity: .02;
+filter: alpha(opacity=2);
+}
+#ds .h4 {
+height: 4px;
+}
+#ds .o5 {
+opacity: .01;
+filter: alpha(opacity=1);
+}
+#ds .h5 {
+height: 5px;
+}
+#ds-h div {
+width: 100%;
+}
+.ds {
+background: black;
+position: absolute;
+z-index: 2;
+top: 0;
+overflow: hidden;
+}
+.panel-width-start {
+left: 250px;
+}
+#ds-v {
+height: 0;
+}
+
+#ds .v1 {
+width: 1px;
+height:100%;
+}
+#ds .v2 {
+width: 2px;
+height:100%;
+}
+#ds .v3 {
+width: 3px;
+height:100%;
+}
+#ds .v4 {
+width: 4px;
+height:100%;
+}
+#ds .v5 {
+width: 5px;
+height:100%;
+}
+#pointbind_map {
+width:100%;
+height:100%;
+position: relative;
+background-color: rgb(229, 227, 223);
+}
+#pointbind_header {
+overflow: visible;
+height: 44px;
+width: 100%;
+clear: both;
+z-index: 5;
+/*background-color: whiteSmoke;
+border-bottom: 1px solid #E5E5E5;
+border-top: 1px solid #EBEBEB;
+*/
+background-image: -webkit-gradient(linear,right top,left bottom,from(#4D90FE),to(#4787ED));
+background-image: -webkit-linear-gradient(right,#4D90FE,#4787ED);
+background-color: #4D90FE;
+background-image: linear-gradient(right,#4D90FE,#4787ED);
+border: 1px solid #3079ED;
+
+min-width:800px;
+}
+#pointbind_header .skunk-head {
+zoom: 1;
+height: 42px;
+padding: 13px 10px 0px 0px;
+position:absolute;
+right:0px;
+}
+#pointbind_page {
+position: absolute;/* relative;*/
+width: 100%;
+height:100%;
+}
+div {
+margin: 0;
+padding: 0;
+}
+div {
+display: block;
+}
+#pointbind_selectbar{
+position: absolute;
+left: 0;
+border-bottom: 1px solid #EBEBEB;
+height: 34px;
+background: white;
+top:0px;
+width: 240px;
+border-bottom: 1px solid #EBEBEB;
+z-index: 200;
+padding-left:10px;
+padding-top:15px;
+}
+#pointbind_searchbar{
+margin:8px auto 10px auto;
+text-align:center;
+}
+#pointbind_toolbar {
+position: absolute;
+left: 0;
+top:50px;
+width: 250px;
+border-bottom: 1px solid #EBEBEB;
+height: 58px;
+background: white;
+z-index: 200;
+}
+
+#pointbind_searchresult{
+position: absolute;
+left: 0;
+top:50px;
+width: 250px;
+border-bottom: 1px solid #EBEBEB;
+padding-bottom:128px;
+overflow-y:scroll;
+overflow-x:none;
+height:100%;
+background: white;
+z-index: 200;
+
+}
+#pointbind_resultDiv{
+border-spacing: 0px;
+width:100%;
+}
+#pointbind_resultDiv tbody{
+cursor: pointer;
+display: table-row-group;
+vertical-align: middle;
+border-color: inherit;
+}
+#pointbind_resultDiv tbody tr{
+height:60px;
+}
+
+#pointbind_resultDiv tbody td{
+border-bottom: 1px solid #EBEBEB;
+font-size: 12px;
+padding:2px;
+}
+
+.lightTR td
+{
+background-color:#F0F0F0;
+
+}
+.unlightTR td
+{
+background-color:white;
+
+}
+
+.lightTR
+{
+background-color:#F0F0F0;
+
+}
+.unlightTR
+{
+background-color:white;
+
+}
+
+
+
+div#container {
+height:100%;
+width:100%;
+margin:0 auto;
+min-height:100%;
+min-width:100%;
+overflow:hidden;
+position:relative;
+
+ /*height:auto !important;  real browsers */
+ height:100%; /* IE6: treaded as min-height*/
+
+ min-height:100%; /* real browsers */
+
+
+ /*width:auto !important;  real browsers */
+ width:100%; /* IE6: treaded as min-width*/
+
+ min-width:100%; /* real browsers */
+}
+
+div#paddedContent
+{
+    height:100%;
+    width:100%;
+
+	margin:0;
+}
+
+div#content{
+bottom:0px;
+float:left;
+padding-bottom:44px;
+margin-top:0px;
+position:absolute;
+top:0;
+right:250px;
+left:0;
+}
+
+span.formatted_address{
+    display: block;
+    margin-left: 36px;
+    margin-top: -14px;
+}

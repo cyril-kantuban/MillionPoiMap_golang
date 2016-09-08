@@ -1,0 +1,65 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>地图定位</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="./static/css/colorpicker.css" type="text/css" />
+    <link rel="stylesheet" href="./static/css/extoverviewmapcontrol.css" />
+    <link rel="stylesheet" href="./static/css/pointbind.css" />
+    <script src="./static/js/jquery-1.8.0.min.js"></script>
+    <script src="./static/js/json2.js"></script>
+
+    <script type="text/javascript" src="./static/js/extoverviewmapcontrol.js"></script>
+    <script type="text/javascript" src="./static/js/pointbind.js"></script>
+    <script type="text/javascript" src="./static/js/colorpicker.js"></script>
+</head>
+<body>
+    <form id="form1" onsubmit="return false;">
+    <div id="container">
+<div id="pointbind_header"><div id="logo"></div><div class="skunk-head"></div>
+   <div id="pointbind_searchbar">
+    <input id="address" type="textbox" maxlength="40" value="" />
+    <button id='query' type="submit" value="定位">定位</button>
+   </div>
+</div>
+  <div id="pointbind_page">
+   <div id="pointbind_selectbar">
+   </div>
+   <div id="pointbind_searchresult">
+   </div>
+    <div id="content">
+   <div id="paddedContent">
+   <div id="pointbind_map" class="panel-width-start">
+   <div id="overview_map_border">
+      <div id="overview_map">
+        <div id="overlayMap"></div>
+      </div>
+    </div>
+   </div>
+   </div>
+   </div>
+
+   <div id="ds">
+   <div id="ds-h">
+    <div class="ds h1 o1"></div>
+    <div class="ds h2 o2"></div>
+    <div class="ds h3 o3"></div>
+    <div class="ds h4 o4"></div>
+    <div class="ds h5 o5"></div>
+   </div>
+   <div id="ds-v">
+    <div class="ds v1 o1 panel-width-start"></div>
+    <div class="ds v2 o2 panel-width-start"></div>
+    <div class="ds v3 o3 panel-width-start"></div>
+    <div class="ds v4 o4 panel-width-start"></div>
+    <div class="ds v5 o5 panel-width-start"></div>
+   </div>
+  </div>
+  </div>
+  </div>
+    </form>
+        <!--script type="text/javascript" src="http://ditu.google.cn/maps/api/js?language=chinese&sensor=false&v=3.10&libraries=places&callback=initialize"></script-->
+
+</body>
+</html>

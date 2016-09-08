@@ -1,0 +1,128 @@
+<html>
+<head>
+    <title>map</title>
+	<meta content="text/html" charset="utf-8" />
+    <style>
+        html, body { width:100%; height: 100%; margin: 0; padding: 0; font-family: Arial; font-size: 14px;}
+        body {background:#F4F4F4 !important}
+        #map-canvas { cursor:pointer; width: 100%; height: 100%; float: left ;}
+        /*=s board map */
+.map_container { padding:4px; position:relative; }
+.map_pic { width:265px; position:absolute; padding:3px; border:none; cursor:pointer; margin:-35px 0 0 0; box-shadow:4px 4px 5px -3px #000;}
+.map_pic.side { margin:-35px 0 0 -194px;}
+.pic_summary { min-height:80px; color:#fff; font-size:14px; line-height:24px; padding:20px 0 10px 92px; border-radius:3px 3px 0 0; background:#333 url('') no-repeat 14px 12px;}
+.pic_summary:hover { background-color:#555;}
+.pic_summary:hover .arrow b, .side .pic_summary:hover .arrow b { color:#555;}
+.pic_summary .cover { position:absolute; left:0; margin-left:23px; width:61px; height:61px; border:1px solid #C2C2C2; padding:3px; background-color:#fff;}
+.pic_summary img { width:61px; height:61px;}
+.poi_summary { width:133px; height:46px; line-height:20px; margin:0 0 0 24px; border-bottom:1px solid #777; overflow:hidden; font-size:12px; }
+.poi_summary .icon_position { display:inline-block; *display:inline; zoom:1; padding-left:10px; background-position:0 -376px; font-size:24px; line-height:40px; height:40px; color:#fff; vertical-align:middle;}
+.poi_summary p { max-width:110px; max-height:44px; padding-left:3px; display:inline-block; *display:inline; zoom:1; vertical-align:middle; line-height:20px; overflow:hidden;}
+
+.pic_nub { width:132px; margin-left:24px; padding:8px 0 0; line-height:18x; font-size:12px; color:#999;}
+.map_pic.side .arrow, .map_pic .arrow { margin:20px 0 0 -5px; position:absolute; top:0; left:0; width:22px;}
+.map_pic.side .arrow { left:auto; right:0; margin:20px -15px 0 0;}
+.map_pic .arrow i, .map_pic .arrow b, .map_pic.side .arrow i, .map_pic.side .arrow b { display:block; line-height:25px; font-size:20px; color:#333; font-style:normal; font-family:simsun;}
+.map_pic .arrow i { color:#fff; margin:0 0 0 -4px;}
+.map_pic .arrow b { margin: -25px 0 0 0;}
+.map_pic.side .arrow i { color:#fff; margin:0 0 0 -3px; }
+.map_pic.side .arrow b { margin:-25px 0 0 -8px;}
+
+.map_dot, .map_dot_current { height:32px; width:24px; margin-left:-12px; margin-top:-32px; position:absolute;}
+.map_dot_current { width:24px; height:32px; margin:-32px 0 0 -13px;}
+.map_dot_shadow { width:37px; height:34px; margin:-37px 0 0 -9px; position:absolute; background:url(http://img.pintupinqu.com/images/pic_map_shadow.png) no-repeat;}
+.map_dot_more_shadow { width:48px; height:22px; margin:-22px 0 0 -12px; position:absolute; background:url(http://img.pintupinqu.com/images/pic_map_more_shadow.png) no-repeat;}
+.map_dot_more { cursor:pointer; width:32px; height:32px; position:absolute; margin:-32px 0 0 -16px;text-align: center;line-height: 32px;color:#f4f4f4;background:url(map_dot_more.png);}
+
+.map_dot_more span { display:block; width:16px; height:21px; color:#f4f4f4; font-size:14px; position:absolute; top:50%; left:50%; margin:-10px 0 0 -8px; *margin:-12px 0 0 -8px; text-align:center;}
+
+.map_dot_img {margin-left:-12px !important; width:30px; height:30px; position:absolute; margin:-30px 0 0 -30px;}
+.map_dot_img img { width:30px; height:30px;}
+
+.btn_mzoom { display:inline-block; *display:inline; zoom:1; position:absolute; height:22px; line-height:22px; padding:0 5px; background-color:#f4f4f4; color:#666; border:1px solid #999; border-radius:3px; right:96px; top:5px !important; top:2px !important\9; }
+.btn_mzoom:hover { background-color:#fff; color:#666;}
+.btn_mzoom span { display:inline-block; *display:inline; zoom:1; margin-right:3px; vertical-align:middle; background:url('') no-repeat -2px -1058px; width:12px; height:13px; vertical-align:-1px;}
+
+.m_poi { width:291px; position:absolute; right:0; top:130px;}
+.btn_hd { position:absolute; width:34px; border:1px solid #ddd; border-right:none; border-radius:3px 0 0 3px; z-index:2;}
+.btn_hd a { display:block; width:14px; padding:20px 10px 18px 10px; line-height:18px; background-color:#f4f4f4; color:#787878; font-size:14px;}
+.btn_hd a.current { background-color:#fff; width:15px;}
+.btn_hd a:hover { background-color:#fff;}
+.btn_hd .icon_position { background-position:-2px -193px;}
+.btn_hd .icon_comment { background-position:-1px -546px;}
+.m_poi_list { position:absolute; left:35px; width:190px; padding:20px 45px 20px 20px; background-color:#fff; border:1px solid #ddd; border-radius:0 0 0 3px; border-right:none; overflow-y:auto; box-shadow:0 3px 5px -3px rgba(0,0,0,0.2); z-index:1;}
+.m_poi_list li { margin-bottom:10px; position:relative;}
+.m_poi_list li a { display:inline-block; *display:inline; zoom:1; padding-left:20px; color:#ffaa06; font-size:14px;}
+.m_poi_list li a:hover { color:#e67c00;}
+.m_poi_list li a .icon_position { position:absolute; margin-left:-20px; background-position:1px -223px;}
+.m_poi_list li a .icon_position:hover, .m_poi_list li a:hover .icon_position { background-position:1px -255px; }
+
+.pic_show { min-width:895px; position:absolute; background-color:#000; color:#fff; font-size:14px;}
+.pic_show .bd img { position:absolute; background:url(http://img.pintupinqu.com/images/bg_transparent.gif) repeat;}
+.pic_show .bd .c_box { float:right; width:300px; border-left:1px solid #333; border-radius:0; background-color::#000; }
+.pic_show .bd .comment_list { height:281px; overflow-y:auto; zoom:1;}
+.pic_show .bd .c_box .my_comment { background:transparent; padding:10px; border-top:none; border-bottom:none;}
+.pic_show .bd .c_box .comment_btn_box { width:280px;}
+.pic_show .bd .c_box .comment_content textarea { width:274px; height:64px; padding:3px; background-color:#333; border:none; border-radius:0; color:#fff}
+.pic_show .bd .c_box .comment_content textarea:focus { border:none; box-shadow:none;}
+.c_box .comment_content { font-size:14px; color:#fff; line-height:18px;}
+.c_box .comment_content p { margin-bottom:5px;}
+.c_box .comment_box { overflow-y:auto; border-top:1px solid #333;}
+.c_box .comment_box .user_avatar { position:static; float:left; }
+.c_box .comment_box .user_avatar img { position:static;}
+.c_box .comment_box li .comment_content a { color:#fff;}
+.c_box .comment_box li .comment_content a:hover { color:#308fe0;}
+.c_box .comment_box .f_box { float:left; height:0; margin:0; zoom:1; position:static;}
+.c_box .comment_box .f_box a { background:transparent; margin:0 20px 0 0; font-size:12px; color:#999;}
+.c_box .comment_box .f_box a:hover { color:#308fe0;}
+.c_box .comment_box li { background:transparent; border-top:none; border-bottom:1px solid #333; padding-bottom:25px; position:static;}
+.pic_show { box-shadow:0 0 10px 5px rgba(0,0,0,0.5) }
+.pic_show .bd .c_box .c_hide { display:block; width:20px; height:30px; margin:10px 0 0 -21px; position:absolute; background-color:#333;}
+.pic_show .bd .c_box .c_hide span { display:block; width:0; height:0; margin:10px 0 0 8px; font-size:0; border:6px solid transparent; border-left:6px solid #000; cursor:pointer;}
+
+.pic_show .ft { border-top:1px solid #333; position:absolute; bottom:0;}
+.pic_show .ft .left { float:left; padding:15px 20px;}
+.pic_show .ft .left p { height:42px; overflow:hidden;}
+.pic_show .ft .left a { color:#FDA92B;}
+.pic_show .ft .left a:hover { color:#e47c20;}
+.pic_show .ft .left a .icon_position { background-position:1px -223px;}
+.pic_show .ft .left a:hover .icon_position { background-position:1px -255px;}
+.pic_show .ft .left .poi { position:absolute; bottom:10px; left:18px; color:#FDA92B;}
+.pic_show .ft .right { float:right; width:300px; overflow:hidden; border-left:1px solid #333;}
+.pic_show .ft .right .top { width:305px; border-bottom:1px solid #333;}
+.pic_show .ft .right .top a { float:left; width:36px; padding:15px 29px 13px 35px; border-right:1px solid #333; color:#ccc; font-size:12px;}
+.pic_show .ft .right .top a p { color:#ccc; font-size:18px; position:relative;}
+.pic_show .ft .right .top a span { position:absolute; margin:5px 0 0 -18px;}
+.pic_show .ft .right .top .icon_c, .pic_show .ft .right .top .icon_l, .pic_show .ft .right .top .icon_comment { display:inline-block; *display:inline; zoom:1; height:16px; padding-left:16px;}
+.pic_show .ft .right .top .icon_comment { background-position:0 -575px;}
+.pic_show .ft .right .top .icon_c { background-position:0 -160px}
+.pic_show .ft .right .top .icon_l { background-position:0 -96px}
+.pic_show .ft .right .top .btn_l:hover .icon_l { background-position:0 0}
+.pic_show .ft .right .top .btn_m:hover .icon_comment { background-position:0 -607px;}
+.pic_show .ft .right .bottom { height:36px; padding:13px 15px 0 60px; margin-bottom:12px; position:relative; color:#999; font-size:12px; overflow:hidden;}
+.pic_show .ft .right .bottom a { color:#999; font-size:12px;}
+.pic_show .ft .right .bottom a:hover { color:#308fe0;}
+.pic_show .ft .right .bottom .user_avatar { position:absolute; margin-left:-42px;}
+.pic_show .ft .right .bottom .user_avatar img { width:32px; height:32px;}
+
+.board_sub_top_c .arrow_hide, .board_sub_top_c .arrow_show { display:block; width:30px; height:31px; padding:0; background:url(http://img.pintupinqu.com/images/un_arrow_map.png) no-repeat; position:absolute; right:0; top:0; margin:-1px -50px 0 0;}
+.board_sub_top_c .arrow_show:hover { background-position:0 -31px;}
+.board_sub_top_c .arrow_hide { background-position:0 -62px;}
+.board_sub_top_c .arrow_hide:hover { background-position:0 -93px;}
+
+.p_tip { position:absolute; left:50%; margin:-32px 0 0 -84px; color:#fff; z-index:33;}
+.p_tip span { background: url(http://img.pintupinqu.com/images/bg_page_tip.png) no-repeat; display:inline-block; height:11px; margin:0 3px; width:24px;}
+
+.map_title { height:29px; line-height:29px; padding-left:4px; color:#666; font-size:14px;}
+.map_title span { color:#999; font-size:12px;}
+/*=e board map */
+    </style>
+    <script src="jquery-1.8.0.min.js"></script>
+    <script charset="utf-8" src="gmap.js"></script>
+</head>
+
+<body>
+    <div data-id="1" id="map-canvas"></div>
+</body>
+</html>
+
