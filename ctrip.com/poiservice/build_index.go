@@ -91,8 +91,8 @@ func Reindex() {
 
 	ReBuildAll()
 
-	//inputFile, inputError := os.Open("poifile.dat") //变量指向os.Open打开的文件时生成的文件句柄
-	inputFile, inputError := os.Open("scenic_spot_poi.dat") 
+	inputFile, inputError := os.Open("million_poi.dat") //变量指向os.Open打开的文件时生成的文件句柄
+	//inputFile, inputError := os.Open("scenic_spot_poi.dat") 
 	
 	
 	if inputError != nil {
