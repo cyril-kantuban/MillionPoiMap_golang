@@ -15,7 +15,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"encoding/gob"
+	//"encoding/gob"
 	"time"
 )
 
@@ -30,33 +30,6 @@ var max_ids = make([]int, 18)
 var rmap_d = make([]map[string]PoiDataNode, 18)
 var rmap = make([]*rtreego.Rtree, 18)
 
-func EncodeRmap(){
-	gob.Register(PoiNode{})
-
-	file, err := os.Create("poi_data.bin") 
-	if err != nil { 
-		fmt.Println(err) 
-	} 
-	 
-	enc := gob.NewEncoder(file) 
-	err2 := enc.Encode(rmap[9]) 
-	if err2 != nil{
-		fmt.Println(err2)
-	}
-}
-
-func DecodeRmap(){
-	file, err := os.Open("poi_data.bin") 
-	if err != nil { 
-		fmt.Println(err) 
-	} 
-
-	dec := gob.NewDecoder(file) 
-	err2 := dec.Decode(&rmap) 
-	if err2 != nil { 
-		fmt.Println(err2) 
-	}
-}
 
 func ReBuildAll() {
 	//创建18级区块索引
@@ -119,7 +92,7 @@ func Reindex() {
 	ReBuildAll()
 
 	//inputFile, inputError := os.Open("poifile.dat") //变量指向os.Open打开的文件时生成的文件句柄
-	inputFile, inputError := os.Open("scenic_spot_poi") 
+	inputFile, inputError := os.Open("scenic_spot_poi.dat") 
 	
 	
 	if inputError != nil {
@@ -164,9 +137,6 @@ func Reindex() {
 		//	continue
 		//}
 
-		//if lng < 129 || lng > 135 || lat < 29 || lat > 32 {
-		//	continue
-		//}
 
 		poiid, _ := strconv.ParseInt(columns[0], 10, 0)
 
@@ -187,18 +157,6 @@ func Reindex() {
 	for zoom := MAX_ZOOM - 1; zoom >= 0; zoom-- {
 		rmap[zoom] = rtreego.NewTree(2, 0, 15)
 		for k, v := range rmap_d[zoom] {
-			//poiNode := &PoiNode{
-			//	Location: v.Location,
-			//	Zoom: zoom,
-			//	Key: k,
-				
-				//PoiId:    v.PoiId,
-				//PoiName:  "",//v.PoiName,
-				//Path:     v.Path,
-				//Total:    v.Total,
-				
-			//}
-			//fmt.Printf("%v:%v\n", k, v)
 			rmap[zoom].Insert( &PoiNode {
 					Location: v.Location,
 					Zoom: zoom,
@@ -209,9 +167,6 @@ func Reindex() {
 		
 	}
 	fmt.Println(time.Now().Sub(k))
-	//EncodeRmap()
-	//DecodeRmap()
-	
 	
 
 }

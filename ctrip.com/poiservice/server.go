@@ -2,7 +2,7 @@ package main
 
 
 import (
-	geohash "ctrip.com/common/geohash"
+	//geohash "ctrip.com/common/geohash"
 )
 
 import (
@@ -29,11 +29,9 @@ func main() {
 	//fmt.Println(geohash.EncodeWithPrecision(33.146876,121.123422,22))
 	//fmt.Println(geohash.EncodeWithPrecision(33.146876,121.123422,9))
 	//fmt.Println(geohash.Decode(geohash.EncodeWithPrecision(33.146876,121.123422,8)).NorthEast())
-	
 	//fmt.Println(geohash.EncodeBase4WithPrecision(33.146876,121.123422,22))
-	fmt.Println(geohash.EncodeBase4WithPrecision(33.146876,121.123422,20))
-	fmt.Println(geohash.DecodeBase4(geohash.EncodeBase4WithPrecision(33.146876,121.123422,20)).NorthEast())
-	
+	//fmt.Println(geohash.EncodeBase4WithPrecision(33.146876,121.123422,20))
+	//fmt.Println(geohash.DecodeBase4(geohash.EncodeBase4WithPrecision(33.146876,121.123422,20)).NorthEast())
 	//fmt.Println(geohash.DecodeBase4(geohash.EncodeBase4WithPrecision(33.146876,121.123422,8)))
 
 	//异步加载数据
@@ -70,16 +68,10 @@ func main() {
 		}
 	})
 
-
 	m.Get(`/map/config`, func(w http.ResponseWriter, r *http.Request, render render.Render) {
 		configHandler(w, r, render)
 	})
 
-/*
-	m.Get(`/map`, func(r render.Render) {
-		r.HTML(200, "map", "map")
-	})
-*/
 	m.Get(`/`, func(r render.Render) {
 		r.HTML(200, "hello", "world")
 	})
