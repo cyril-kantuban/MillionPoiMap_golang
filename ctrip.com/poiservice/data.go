@@ -20,12 +20,6 @@ type PoiNode struct {
 	Key string
 }
 
-type PoiNodeDemo struct {
-	Location rtreego.Point
-	Zoom int
-	key string
-}
-
 var tol = 0.000000001
 
 func (s *PoiNode) Bounds() *rtreego.Rect {
