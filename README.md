@@ -1,17 +1,12 @@
 # 目录说明
 此源代码目录中的文件及文件夹放置于gohome目录下的src中，如下例所示
 
-    gohome
-
-        ├──bin
-
-        ├──pkg
-
-        └──src
-
-            ├──ctrip.com
-
-            └──github.com
+    gohome 
+        ├──bin 
+        ├──pkg 
+        └──src 
+            ├──ctrip.com 
+            └──github.com 
     
 - 前端聚合执行demo为src/ctrip.com/poiservice/前端聚合/examples/sppeed_test_example.html
 - 后端聚合执行demo为src/ctrip.com/poiservice/后端聚合/map.html(需先启动服务)
